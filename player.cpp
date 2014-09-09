@@ -45,6 +45,7 @@ bool Player::checkWin(int index) {
     return false;       //otherwise return false
 }
 bool Player::checkWinAI(int index, int box_index)  {
+    char temp = (*grid_ptr)[index][box_index];
     (*grid_ptr)[index][box_index] = player_symbol;
     bool win = false;
    for(int i = 0 ; i < 7 ; i+=3)   {
@@ -67,7 +68,7 @@ bool Player::checkWinAI(int index, int box_index)  {
         (*grid_ptr)[index][4] == player_symbol &&
          (*grid_ptr)[index][6] == player_symbol)
         win = true;
-    (*grid_ptr)[index][box_index] = ' ';
+    (*grid_ptr)[index][box_index] = temp;
     return win;
 }
 bool Player::checkTie(int index) {

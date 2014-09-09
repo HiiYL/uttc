@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="UltimateTicTacToe" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/UltimateTicTacToe" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="sfml-graphics-d" />
+					<Add library="sfml-audio-d" />
+					<Add library="sfml-window-d" />
+					<Add library="sfml-network-d" />
+					<Add library="sfml-system-d" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/UltimateTicTacToe" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-audio" />
+					<Add library="sfml-window" />
+					<Add library="sfml-network" />
+					<Add library="sfml-system" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-DSFML_STATIC" />
+			<Add directory="C:/SFML-2.1/include" />
+		</Compiler>
+		<Linker>
+			<Add option="-static-libgcc" />
+			<Add directory="C:/SFML-2.1/lib" />
+		</Linker>
+		<Unit filename="Main.cpp" />
+		<Unit filename="Messenger.cpp" />
+		<Unit filename="Messenger.hpp" />
+		<Unit filename="TextCursor.cpp" />
+		<Unit filename="TextCursor.hpp" />
+		<Unit filename="board.cpp" />
+		<Unit filename="board.hpp" />
+		<Unit filename="button.cpp" />
+		<Unit filename="button.hpp" />
+		<Unit filename="cScreen.hpp" />
+		<Unit filename="cursor.cpp" />
+		<Unit filename="cursor.hpp" />
+		<Unit filename="grid.cpp" />
+		<Unit filename="grid.hpp" />
+		<Unit filename="helper.cpp" />
+		<Unit filename="helper.hpp" />
+		<Unit filename="highlighted_grid.cpp" />
+		<Unit filename="highlighted_grid.hpp" />
+		<Unit filename="loadResources.hpp" />
+		<Unit filename="patch.hpp" />
+		<Unit filename="pause_overlay.cpp" />
+		<Unit filename="pause_overlay.hpp" />
+		<Unit filename="player.cpp" />
+		<Unit filename="player.hpp" />
+		<Unit filename="preview.hpp" />
+		<Unit filename="replay.cpp" />
+		<Unit filename="replay.hpp" />
+		<Unit filename="screen_0.cpp" />
+		<Unit filename="screen_0.hpp" />
+		<Unit filename="screen_1.cpp" />
+		<Unit filename="screen_1.hpp" />
+		<Unit filename="screen_2.cpp" />
+		<Unit filename="screen_2.hpp" />
+		<Unit filename="screen_3.cpp" />
+		<Unit filename="screen_3.hpp" />
+		<Unit filename="screen_4.cpp" />
+		<Unit filename="screen_4.hpp" />
+		<Unit filename="screen_5.cpp" />
+		<Unit filename="screen_5.hpp" />
+		<Unit filename="screen_6.hpp" />
+		<Unit filename="screens.hpp" />
+		<Unit filename="shapeCreate.cpp" />
+		<Unit filename="shapeCreate.hpp" />
+		<Unit filename="sidebar.cpp" />
+		<Unit filename="sidebar.hpp" />
+		<Unit filename="victory_banner.cpp" />
+		<Unit filename="victory_banner.hpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

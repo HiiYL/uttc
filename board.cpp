@@ -102,14 +102,25 @@ void Board::updateAI(Player* curr_player, Player* oppo_player)   {
     if(!decided)    {
         std::cout << "I DON'T KNOW WHAT I'M DOING" << std::endl;
         for(auto &i : free_index)   {
-            if(oppo_player->checkWinAI(indices.second,i))   {
-                std::cout << "OHO! You thought you could trick me by making me place at position " << i << "eh?" << std::endl
-                          << "Not A Chance!" << std::endl;
-                free_index.erase(find(free_index.begin(), free_index.end(), i));
+            for(int j = 0 ; j < 9; j++)    {
+                if(board_grid[i][j]==' ')
+                    if(oppo_player->checkWinAI(i,j))    {
+                        free_index.erase(find(free_index.begin(),free_index.end(),i));
+                        std::cout << "YOU THOUGHT I MIGHT LET YOU WIN BY CLICKING BOX " << i << std::endl;
+                        std::cout << "OHO, HOW NAIVE"<< std::endl << std::endl;
+                    }
             }
         }
-        int j = rand()%free_index.size();
-        index = free_index[j];
+        if(find(free_index.begin(),free_index.end(), 4) != free_index.end())    {
+            for(auto &i : free_index)
+                std::cout << i << " ";
+            std::cout << std::endl;
+            index = 4;
+        }
+        else    {
+            int j = rand()%free_index.size();
+            index = free_index[j];
+        }
     }
     grid.setTexture(indices.second,index,curr_player->texture);
     sound_to_play = rand()%2;
