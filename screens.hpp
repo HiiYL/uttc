@@ -11,4 +11,5 @@
 #include "screen_3.hpp"
 #include "screen_4.hpp"
 #include "screen_5.hpp"
+#include "screen_6.hpp"
 #endif // SCREENS_HPP_INCLUDED

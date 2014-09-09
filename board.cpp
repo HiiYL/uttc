@@ -8,7 +8,8 @@ Tutorial Section: TC201
 ********************************************/
 //EXPLANATION
 //A CLASS TO LINK PREVIEW, HIGHLIGHT_GRID AND GRID TOGETHER AS WELL AS HANDLE ALL LOGIC
-
+#include <iostream>
+#include <algorithm>
 #include "board.hpp"
 Board::Board(int starting_index, sf::RenderWindow& in_window, ResourceHolder *res_container):
     resources(res_container),grid(res_container),playable_grid(grid,res_container, starting_index),
@@ -49,7 +50,7 @@ void  Board::update(Player* curr_player)  {
             {
                 sound_to_play = rand()%2;
                 placement[sound_to_play].play();
-                std::pair<int,int> indices = playable_grid.getIndex(position);
+                indices = playable_grid.getIndex(position);
                 if(grid.setTexture(indices.first,indices.second,curr_player->texture)) {
                     game_done = curr_player->updateState(indices.first,indices.second);
                     playable_grid.update(indices.second);
@@ -70,6 +71,54 @@ void  Board::update(Player* curr_player)  {
             }
         }
     }
+}
+void Board::updateAI(Player* curr_player, Player* oppo_player)   {
+    //int index = rand()%9;
+    int index = 0;
+    int counter = 0 ;
+    std::vector<int> free_index;
+    bool decided = false;
+    for(int i = 0 ; i < board_grid[indices.second].size(); i++)   {
+        if(board_grid[indices.second][i] == ' ')
+            free_index.push_back(i);
+    }
+    for(auto &i : free_index) {
+        if(board_grid[indices.second][i] == ' ')    {
+                if(curr_player->checkWinAI(indices.second,i))    {
+                    std::cout << "YOU LOSE!" << std::endl;
+                    index = i;
+                    decided = true;
+                    break;
+                }
+                if(oppo_player->checkWinAI(indices.second,i))    {
+                    std::cout << "YOU CAN'T WIN" << std::endl;
+                    index = i;
+                    decided = true;
+                    break;
+                }
+        }
+    }
+    std::cout << std::endl;
+    if(!decided)    {
+        std::cout << "I DON'T KNOW WHAT I'M DOING" << std::endl;
+        for(auto &i : free_index)   {
+            if(oppo_player->checkWinAI(indices.second,i))   {
+                std::cout << "OHO! You thought you could trick me by making me place at position " << i << "eh?" << std::endl
+                          << "Not A Chance!" << std::endl;
+                free_index.erase(find(free_index.begin(), free_index.end(), i));
+            }
+        }
+        int j = rand()%free_index.size();
+        index = free_index[j];
+    }
+    grid.setTexture(indices.second,index,curr_player->texture);
+    sound_to_play = rand()%2;
+    placement[sound_to_play].play();
+    game_done = curr_player->updateState(indices.second,index);
+    playable_grid.update(index);
+    round_done = true;
+    number_of_moves++;
+    tie = checkTie(curr_player, indices.second);
 }
 void Board::update(Player* curr_player, sf::TcpSocket *socket)  {       //update overload for online play(CLIENT)
     position = (sf::Vector2f)sf::Mouse::getPosition(window);
@@ -143,6 +192,7 @@ void Board::update(Player* curr_player,sf::Vector2f position, bool click)    {  
         }
     }
 }
+
 void Board::move(float x, float y) {     //function needed to preserve click-able areas after movement
     grid.move( x, y);
     playable_grid.move(x,y);

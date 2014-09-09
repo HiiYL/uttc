@@ -44,6 +44,32 @@ bool Player::checkWin(int index) {
         return true;
     return false;       //otherwise return false
 }
+bool Player::checkWinAI(int index, int box_index)  {
+    (*grid_ptr)[index][box_index] = player_symbol;
+    bool win = false;
+   for(int i = 0 ; i < 7 ; i+=3)   {
+        if((*grid_ptr)[index][i] == player_symbol &&
+            (*grid_ptr)[index][i+1] == player_symbol &&
+             (*grid_ptr)[index][i+2] == player_symbol)       //for vertical
+            win = true;
+    }
+    for(int i = 0 ; i < 3; i++) {
+        if((*grid_ptr)[index][i] == player_symbol &&
+            (*grid_ptr)[index][i+3] == player_symbol &&
+             (*grid_ptr)[index][i+6] == player_symbol)
+            win = true;
+    }
+    if((*grid_ptr)[index][0] == player_symbol &&
+        (*grid_ptr)[index][4] == player_symbol &&
+         (*grid_ptr)[index][8] == player_symbol)
+        win = true;
+    if((*grid_ptr)[index][2] == player_symbol &&
+        (*grid_ptr)[index][4] == player_symbol &&
+         (*grid_ptr)[index][6] == player_symbol)
+        win = true;
+    (*grid_ptr)[index][box_index] = ' ';
+    return win;
+}
 bool Player::checkTie(int index) {
     for(std::vector<char>::iterator i = (*grid_ptr)[index].begin(); i != (*grid_ptr)[index].end(); ++i) {
         if((*i)==' ') {

@@ -61,6 +61,11 @@ int screen_0::Run(sf::RenderWindow &App)        //MAIN MENU SCREEN
     view_replays.load(resources->textures.get("ViewReplaysBase"), resources->textures.get("ViewReplaysHover"));
     view_replays.setPosition(300,200);
     view_replays.animatedMovement(sf::Vector2f(250,300),3);
+
+    Button ai(App);
+    ai.load(resources->textures.get("AI"));
+    ai.setPosition(0,App.getSize().y-ai.getGlobalBounds().y);
+
     sf::Sprite menu_background;
     menu_background.setTexture(resources->textures.get("BackgroundClouds"));
     sf::Sprite mouse_cursor;
@@ -81,6 +86,8 @@ int screen_0::Run(sf::RenderWindow &App)        //MAIN MENU SCREEN
                 return 2;
             if(view_replays.isClicked(event))
                 return(3);
+            if(ai.isClicked(event))
+                return 5;
             if(timer_edit_mode) {
                 if(increaseTimer.isClicked(event))
                    timer++;
@@ -118,6 +125,7 @@ int screen_0::Run(sf::RenderWindow &App)        //MAIN MENU SCREEN
             App.draw(increaseTimer);
             App.draw(decreaseTimer);
         }
+        App.draw(ai);
         App.draw(view_replays);
         App.draw(mouse_cursor);
         App.display();

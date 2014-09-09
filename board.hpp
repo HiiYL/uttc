@@ -14,6 +14,7 @@ public:                                                                 //previe
     void update(Player* curr_player,sf::Vector2f position, bool click);                                    //variables for different results
     void update(Player* curr_player, sf::TcpSocket *socket);
     void update(Player* curr_player, bool wtf, sf::TcpSocket *socket);
+    void updateAI(Player* curr_player, Player* oppo_player);
     sf::Vector2f getPosition()  {return grid.getPosition(0,0);};
     std::vector<std::vector<char> >* getBoardGrid() {return &board_grid;};
     void move(float x, float y);
@@ -38,6 +39,7 @@ private:
     Grid grid;
     HighlightedGrid playable_grid;
     Preview preview;
+    std::pair<int,int> indices;
     int starting_index;
     bool is_clicked;
     bool mouseClicked;

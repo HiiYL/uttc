@@ -91,6 +91,7 @@ void loadResources (ResourceHolder* resources)  {
     resources->textures.load("SaveReplayBase", "resources/images/save_replay_base.png");
     resources->textures.load("SaveReplayHover", "resources/images/save_replay_hover.png");
     resources->textures.load("Highlight", "resources/images/highlight_grid_blue.png");
+    resources->textures.load("AI", "resources/ai.png");
 
     resources->sounds.load("Placement1", "resources/sounds/placement_1.ogg");
     resources->sounds.load("Placement2", "resources/sounds/placement_2.ogg");

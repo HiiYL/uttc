@@ -34,6 +34,8 @@ int main(int argc, char** argv)
     Screens.push_back(&s4);
     screen_5 s5(&resources);
     Screens.push_back(&s5);
+    screen_6 s6(&resources);
+    Screens.push_back(&s6);
     while (screen >= 0)
     {
         screen = Screens[screen]->Run(App);

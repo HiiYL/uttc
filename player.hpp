@@ -11,8 +11,9 @@ class Player {
 
     void setTexture(sf::Texture *tex);
     bool checkTie(int index);
- private:
     bool checkWin(int index);
+    bool checkWinAI(int index, int box_index);
+ private:
     bool win;
     std::vector<std::vector<char> >* grid_ptr;
     int curr_grid_x;        //remembers current grid for use with checking for tie
