@@ -13,14 +13,14 @@ class Player {
     bool checkTie(int index);
     bool checkWin(int index);
     bool checkWinAI(int index, int box_index);
-    char player_symbol;
+
  private:
     bool win;
     std::vector<std::vector<char> >* grid_ptr;
     int curr_grid_x;        //remembers current grid for use with checking for tie
     int curr_grid_y;        //ditto
     int curr_index;
-
+    char player_symbol;
     bool tie;
 };
 
