@@ -105,9 +105,13 @@ void Board::updateAI(Player* curr_player, Player* oppo_player)   {
             for(int j = 0 ; j < 9; j++)    {
                 if(board_grid[i][j]==' ')
                     if(oppo_player->checkWinAI(i,j))    {
-                        free_index.erase(find(free_index.begin(),free_index.end(),i));
-                        std::cout << "YOU THOUGHT I MIGHT LET YOU WIN BY CLICKING BOX " << i << std::endl;
-                        std::cout << "OHO, HOW NAIVE"<< std::endl << std::endl;
+                        auto win_cond = find(free_index.begin(),free_index.end(),i);
+                        if(win_cond != free_index.end() && free_index.size() != 1)
+                        {
+                            free_index.erase(win_cond);
+                            std::cout << "YOU THOUGHT I MIGHT LET YOU WIN BY CLICKING BOX " << i << std::endl;
+                            std::cout << "OHO, HOW NAIVE"<< std::endl << std::endl;
+                        }
                     }
             }
         }

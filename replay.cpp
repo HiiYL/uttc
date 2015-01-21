@@ -107,5 +107,5 @@ void Replay::play(sf::Sprite& mockCursor)  {
 }
 bool Replay::checkFile(unsigned int i)  {
     std::ifstream in(replay_file[i].c_str());
-    return (in);
+    return (in.is_open());
 }

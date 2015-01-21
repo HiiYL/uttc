@@ -18,7 +18,7 @@ void TextureHolder::load(const std::string& name, const std::string& filename)
 }
 sf::Texture& TextureHolder::get(const std::string& name)
 {
-    std::map<const std::string, sf::Texture*>::iterator found = mTextureMap.find(name);
+    auto found = mTextureMap.find(name);
     return *found->second;
 }
 
